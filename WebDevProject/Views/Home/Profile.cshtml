@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+<h1>@ViewData["Title"]</h1>
+
+<link rel="stylesheet" href="~/css/profile.css">
+
+<div class="page">
+    <section class="personalia">
+        <div class="slideshow-person-logo">
+            <img class="person-logo" src="~/resources/images/Aimi.jpg">
+            <img class="person-logo" src="~/resources/images/AuroraBorealis1.jpg">
+            <img class="person-logo" src="~/resources/images/AuroraBorealis2.jpg">
+            <img class="person-logo" src="~/resources/images/Iceblocks.jpg">
+            <div>
+                <button class="slideshow-button-left" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="slideshow-button-right" onclick="plusDivs(+1)">&#10095;</button>
+            </div>
+            <script>
+                var slideIndex = 1;
+                showDivs(slideIndex);
+
+                function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                }
+
+                function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("person-logo");
+                    if (n > x.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = x.length };
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    x[slideIndex - 1].style.display = "block";
+                }</script>
+        </div>
+        <h1 class="person-name">Natalie Geurtsen</h1>
+
+        <section class="profile-personale">
+            <p class="profile-content__email">nataliegeurtsen@gmail.com</p>
+            <p class="profile-content__phone">+31 6 55 87 40 05</p>
+        </section>
+    </section>
+
+    <section class="profile">
+        <section class="profile-content">
+
+            <div class="profile-content__category--hidden-mobile">
+                <h3 class="profile-content__category-title">Profiel</h3>
+                <hr>
+            </div>
+
+            <div class="profile-content__element--hidden-mobile">
+                <div class="profile-content__element-header">
+                </div>
+                <p class="profile-content__description">
+                    Sicke beschrijving hierzo.
+                <p>
+            </div>
+
+
+            <div class="profile-content__category">
+                <h3 class="profile-content__category-title">Opleidingen</h3>
+                <hr>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Bachelor's degree, HBO-ICT</h4>
+                    <p class="profile-content__period">aug 2021 - heden</p>
+                </div>
+                <p class="profile-content__institute">Windesheim, Zwolle</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Toegepaste psychologie (Applied Psychology)</h4>
+                    <p class="profile-content__period">aug 2020 - jan 2021</p>
+                </div>
+                <p class="profile-content__institute">Hogeschool van Amsterdam, Amsterdam</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Communication and multimedia design</h4>
+                    <p class="profile-content__period">aug 2017 - apr 2018</p>
+                </div>
+                <p class="profile-content__institute">Hogeschool Utrecht, Utrecht</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Bachelor in de Rechten, Rechten</h4>
+                    <p class="profile-content__period">aug 2016 - jun 2017</p>
+                </div>
+                <p class="profile-content__institute">Hogeschool Utrecht, Utrecht</p>
+            </div>
+
+            <div class="profile-content__category">
+                <h3 class="profile-content__category-title">Werkervaring</h3>
+                <hr>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Quality manager</h4>
+                    <p class="profile-content__period">mrt 2020 - heden</p>
+                </div>
+                <p class="profile-content__institute">ContactCare, Amersfoort</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Senior Klantexpert</h4>
+                    <p class="profile-content__period">jul 2019 - heden</p>
+                </div>
+                <p class="profile-content__institute">ContactCare, Amersfoort</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">Crewlid</h4>
+                    <p class="profile-content__period">jun 2016 - nov 2018</p>
+                </div>
+                <p class="profile-content__institute">McDonald's, Nijkerk</p>
+            </div>
+
+            <div class="profile-content__category">
+                <h3 class="profile-content__category-title">Skills</h3>
+                <hr>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">HTML</h4>
+                </div>
+                <p class="profile-content__institute">••••○</p>
+            </div>
+
+            <div class="profile-content__element">
+                <div class="profile-content__element-header">
+                    <h4 class="profile-content__title">C#</h4>
+                </div>
+                <p class="profile-content__institute">•••○○</p>
+            </div>
+        </section>
+
+    </section>
+</div>
