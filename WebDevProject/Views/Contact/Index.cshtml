@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Contact";
+﻿@model Person
+@{
+    ViewData["Title"] = "Index";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -24,8 +25,18 @@
             <form action="" method="post" class="form-contactpagina">
 
                 <div class="form-contactpagina__inputelement fx-col">
-                    <label for="name">Naam: </label>
-                    <input type="text" name="name" id="name" required>
+                    <label for="name">First name: </label>
+                    <input type="text" name="firstname" id="firstname" required>
+                </div>
+                
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="name">Last name: </label>
+                    <input type="text" name="lastname" id="lastname" required>
+                </div>
+                
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="name">Date of birth: </label>
+                    <input type="date" name="dateofbirth" id="dateofbirth" required>
                 </div>
 
                 <div class="form-contactpagina__inputelement fx-col">
@@ -54,7 +65,10 @@
 
 
             </form>
-
+            
+            @section Scripts{
+                @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
 
         </section>
     </div>
