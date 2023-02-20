@@ -17,7 +17,7 @@ namespace WebDevProject.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new PageViewCount { PageViews = UpdatePageViewCookie()});
         }
 
         public IActionResult Profile()
@@ -41,19 +41,21 @@ namespace WebDevProject.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public void UpdatePageViewCookie()
+        public int UpdatePageViewCookie()
         {
             var currentCookieValue = Request.Cookies[PageViews];
 
             if (currentCookieValue == null)
             {
                 Response.Cookies.Append(PageViews, "1");
+                return 1;
             }
             else
             {
                 var newCookieValue = short.Parse(currentCookieValue) + 1;
 
                 Response.Cookies.Append(PageViews, newCookieValue.ToString());
+                return newCookieValue;
             }
         }
     }
