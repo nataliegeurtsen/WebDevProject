@@ -108,3 +108,5 @@ dist
 bin
 out
 obj
+*.2
+.vs/
