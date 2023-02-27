@@ -1,16 +1,13 @@
 ﻿@model Person
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Contact";
 }
 <h1>@ViewData["Title"]</h1>
-
-<p>Contactpage.</p>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contactpagina</title>
     <link rel="stylesheet" href="stylesheets/contact.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
@@ -20,54 +17,81 @@
     <div class="page">
         <section class="contact">
 
-            <h1>Contact</h1>
-
-            <form action="" method="post" class="form-contactpagina">
-
-                <div class="form-contactpagina__inputelement fx-col">
-                    <label for="name">First name: </label>
-                    <input type="text" name="firstname" id="firstname" required>
-                </div>
+            <form action="/contact/create" method="post" class="form-contactpagina">
                 
+                @*<input type="hidden" name="FormId" id="FormId" value="<%=request.getParameter(firstinput)%>" />*@
+
                 <div class="form-contactpagina__inputelement fx-col">
-                    <label for="name">Last name: </label>
-                    <input type="text" name="lastname" id="lastname" required>
-                </div>
-                
-                <div class="form-contactpagina__inputelement fx-col">
-                    <label for="name">Date of birth: </label>
-                    <input type="date" name="dateofbirth" id="dateofbirth" required>
+                    <label for="FirstName">First name: </label>
+                    <input type="text" name="FirstName" id="FirstName" required>
                 </div>
 
                 <div class="form-contactpagina__inputelement fx-col">
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id="email">
+                    <label for="LastName">Last name: </label>
+                    <input type="text" name="LastName" id="LastName" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Email">E-mail: </label>
+                    <input type="email" name="Email" id="Email" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Subject">Subject: </label>
+                    <input type="text" name="Subject" id="Subject" maxlength="200" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Message">Message: </label>
+                    <textarea name="Message" id="Message" cols="30" rows="1" maxlength="600" required></textarea>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="PhoneNumber">Tel: </label>
+                    <input type="tel" name="PhoneNumber" id="PhoneNumber" pattern="[0-9]*" required>
                 </div>
 
                 <div class="form-contactpagina__inputelement">
                     <fieldset>
-                        <legend>Wil je onze nieuwsbrief ontvangen?</legend>
-                        <label><input type="radio" name="newsletter" value="yes" checked /> Ja, graag!</label>
-                        <label><input type="radio" name="newsletter" value="no" /> Nee, een andere keer</label>
+                        <legend>Wil je teruggebeld worden?</legend>
+                        <label><input type="radio" name="Callback" value="true" /> Ja, graag!</label>
+                        <label><input type="radio" name="Callback" value="false" checked /> Nee, dank je</label>
                     </fieldset>
                 </div>
 
                 <div class="form-contactpagina__inputelement fx-col">
-                    <label for="call-date">Op welke dag kunnen we bellen? </label>
-                    <input name="call-date" type="date" id="call-date">
+                    <label for="CallbackAvailability">Zo ja, wanneer ben je bereikbaar? </label><br/>
+                    <label><input type="checkbox" name="CallbackAvailableMonday" value="true" />Monday</label><br/>
+                    <label><input type="checkbox" name="CallbackAvailableTuesday" value="true" />Tuesday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableWednesday" value="true" />Wednesday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableThursday" value="true" />Thursday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableFriday" value="true" />Friday</label>
                 </div>
 
+                @*<script src="https://www.google.com/recaptcha/enterprise.js?render=6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi"></script>
+                <script>
+                grecaptcha.enterprise.ready(function () {
+                grecaptcha.enterprise.execute('6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi', { action: 'login' }).then(function (token) {
+                });
+                });
+                </script>*@
+
+                <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+                <div class="g-recaptcha" data-sitekey="6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi" data-action="LOGIN"></div>
+                
+
+
                 <div class="form-contactpagina__inputelement">
+                    <input type="reset" value="Reset">
                     <input type="submit" value="Verstuur!">
                 </div>
 
-                /*student uitwerking*/
-
-
             </form>
-            
+
             @section Scripts{
-                @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                @{
+                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                }
             }
 
         </section>
