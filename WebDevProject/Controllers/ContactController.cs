@@ -25,22 +25,19 @@ namespace WebDevProject.Controllers
             //het person-object zal automatisch worden gevuld met de waarden uit het formulier
             //je kunt het person-object gebruiken om logica uit te voeren of de gegevens op te slaan in een database
             //maak de rescourcfe aan met de gegevens uit het model
-            if (ModelState.IsValid)
-            {
-                //het model is geldig, dus je kunt logica uitvoeren of de gegevens opslaan in een database
-
-                _myDbContext.Persons.Add(person);
-                _myDbContext.SaveChanges();
-                _ = SendContactMail(person.FormId, person.FirstName, person.LastName, person.Email, person.Subject, person.Message, person.PhoneNumber, person.Callback, person.CallbackAvailableMonday, person.CallbackAvailableTuesday, person.CallbackAvailableWednesday, person.CallbackAvailableThursday, person.CallbackAvailableFriday);
-                _ = SendContactConfirmationMail(person.Subject, person.Message, person.Email, person.FirstName, person.LastName, person.PhoneNumber);
-                Console.WriteLine("Succeeded");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 //het model is ongeldig, dus je kunt een foutmelding teruggeven of het formulier opnieuw renderen met foutmeldingen
                 Console.WriteLine(ModelState);
+                return BadRequest("Invalid data received");
             }
-
+            //het model is geldig, dus je kunt logica uitvoeren of de gegevens opslaan in een database
+            _myDbContext.Persons.Add(person);
+            _myDbContext.SaveChanges();
+            _ = SendContactMail(person.FormId, person.FirstName, person.LastName, person.Email, person.Subject, person.Message, person.PhoneNumber, person.Callback, person.CallbackAvailableMonday, person.CallbackAvailableTuesday, person.CallbackAvailableWednesday, person.CallbackAvailableThursday, person.CallbackAvailableFriday);
+            _ = SendContactConfirmationMail(person.Subject, person.Message, person.Email, person.FirstName, person.LastName, person.PhoneNumber);
+            
+            Console.WriteLine("Succeeded");
             return RedirectToAction("Index");
         }
 
