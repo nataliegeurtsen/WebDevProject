@@ -12,7 +12,7 @@ using WebDevProject.Controllers;
 namespace WebDevProject.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230227151939_InitiateDatabase")]
+    [Migration("20230227165256_InitiateDatabase")]
     partial class InitiateDatabase
     {
         /// <inheritdoc />
@@ -48,6 +48,9 @@ namespace WebDevProject.Migrations
 
                     b.Property<bool>("CallbackAvailableWednesday")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()

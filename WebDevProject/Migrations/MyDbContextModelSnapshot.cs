@@ -46,6 +46,9 @@ namespace WebDevProject.Migrations
                     b.Property<bool>("CallbackAvailableWednesday")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

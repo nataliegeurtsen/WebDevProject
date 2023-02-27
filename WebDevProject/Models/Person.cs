@@ -9,6 +9,8 @@ namespace WebDevProject.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public Guid FormId { get; set; } = Guid.NewGuid();
         [Required]
+        public DateTime Date { get; set; } = DateTime.Now;
+        [Required]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
