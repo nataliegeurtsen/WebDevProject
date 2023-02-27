@@ -1,0 +1,96 @@
+﻿@model Person
+@{
+    ViewData["Title"] = "Contact";
+}
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/contact.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="page">
+        <section class="contact">
+
+            <form action="/contact/create" method="post" class="form-contactpagina">
+                
+                @*<input type="hidden" name="FormId" id="FormId" value="<%=request.getParameter(firstinput)%>" />*@
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="FirstName">First name: </label>
+                    <input type="text" name="FirstName" id="FirstName" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="LastName">Last name: </label>
+                    <input type="text" name="LastName" id="LastName" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Email">E-mail: </label>
+                    <input type="email" name="Email" id="Email" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Subject">Subject: </label>
+                    <input type="text" name="Subject" id="Subject" maxlength="200" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="Message">Message: </label>
+                    <textarea name="Message" id="Message" cols="30" rows="1" maxlength="600" required></textarea>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="PhoneNumber">Tel: </label>
+                    <input type="tel" name="PhoneNumber" id="PhoneNumber" pattern="[0-9]*" required>
+                </div>
+
+                <div class="form-contactpagina__inputelement">
+                    <fieldset>
+                        <legend>Wil je teruggebeld worden?</legend>
+                        <label><input type="radio" name="Callback" value="true" /> Ja, graag!</label>
+                        <label><input type="radio" name="Callback" value="false" checked /> Nee, dank je</label>
+                    </fieldset>
+                </div>
+
+                <div class="form-contactpagina__inputelement fx-col">
+                    <label for="CallbackAvailability">Zo ja, wanneer ben je bereikbaar? </label><br/>
+                    <label><input type="checkbox" name="CallbackAvailableMonday" value="true" />Monday</label><br/>
+                    <label><input type="checkbox" name="CallbackAvailableTuesday" value="true" />Tuesday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableWednesday" value="true" />Wednesday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableThursday" value="true" />Thursday</label><br />
+                    <label><input type="checkbox" name="CallbackAvailableFriday" value="true" />Friday</label>
+                </div>
+
+                <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+                <div class="g-recaptcha" data-sitekey="6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi" data-action="LOGIN" data-callback="recaptcha_callback"></div>
+
+                <div class="form-contactpagina__inputelement">
+                    <input type="reset" value="Reset">
+                    <input type="submit" id="Verstuur" value="Verstuur!" disabled>
+                    <script type="text/javascript">
+                        function recaptcha_callback() {
+                            $('#Verstuur').removeAttr('disabled');
+                        };
+                    </script>
+                </div>
+
+            </form>
+
+            @section Scripts{
+                @{
+                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                }
+            }
+
+        </section>
+    </div>
+
+</body>
+</html>
