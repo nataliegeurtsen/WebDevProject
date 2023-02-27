@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SendGrid.Helpers.Mail;
+using SendGrid;
 using WebDevProject.Models;
+using System.Dynamic;
 
 namespace WebDevProject.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly MyDbContext _myDbContext;
+        public ContactController(MyDbContext myDbContext)
+        {
+            _myDbContext = myDbContext;
+        }
         [HttpGet]
         public IActionResult Index()
         {
@@ -14,17 +22,23 @@ namespace WebDevProject.Controllers
         [HttpPost]
         public IActionResult Create(Person person)
         {
-            //het person-object zal automatisch worden gevuld met de waarden uithet formulier
+            //het person-object zal automatisch worden gevuld met de waarden uit het formulier
             //je kunt het person-object gebruiken om logica uit te voeren of de gegevens op te slaan in een database
             //maak de rescourcfe aan met de gegevens uit het model
             if (ModelState.IsValid)
             {
                 //het model is geldig, dus je kunt logica uitvoeren of de gegevens opslaan in een database
+
+                _myDbContext.Persons.Add(person);
+                _myDbContext.SaveChanges();
+                _ = SendContactMail(person.FormId, person.Subject, person.Message, person.Email, person.FirstName, person.LastName, person.PhoneNumber);
+                _ = SendContactConfirmationMail(person.Subject, person.Message, person.Email, person.FirstName, person.LastName, person.PhoneNumber);
+                Console.WriteLine("Succeeded");
             }
             else
             {
                 //het model is ongeldig, dus je kunt een foutmelding teruggeven of het formulier opnieuw renderen met foutmeldingen
-
+                Console.WriteLine(ModelState);
             }
 
             return RedirectToAction("Index");
@@ -42,6 +56,63 @@ namespace WebDevProject.Controllers
         {
             //verwijder de resource met het opgegeven ID
             return NoContent();
+        }
+
+        static async Task SendContactConfirmationMail(string emailsubject, string message, string emailto, string firstname, string lastname, int tel)
+        {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("nataliegeurtsen@gmail.com", "Natalie Geurtsen");
+            var subject = emailsubject;
+            var fullname = firstname + " " + lastname;
+            var to = new EmailAddress(emailto, fullname);
+            var plainTextContent = message;
+            var htmlContent = message;
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+        static async Task SendContactMail(Guid formid, string emailsubject, string message, string emailto, string firstname, string lastname, int tel)
+        {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var client = new SendGridClient(apiKey);
+            var fullname = firstname + " " + lastname;
+
+            dynamic dynamicTemplateData = new ExpandoObject();
+            dynamicTemplateData.formid = formid;
+            dynamicTemplateData.emailsubject = emailsubject;
+            dynamicTemplateData.message = message;
+            dynamicTemplateData.emailto = emailto;
+            dynamicTemplateData.firstname = firstname;
+            dynamicTemplateData.lastname = lastname;
+            dynamicTemplateData.tel = tel;
+
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress("nataliegeurtsen@gmail.com", "Natalie Geurtsen"),
+                Subject = emailsubject,
+                PlainTextContent = message,
+                HtmlContent = message
+            };
+            msg.SetTemplateId("d-ccd31a3163564adcaa3da4a76d159099");
+            msg.SetTemplateData(dynamicTemplateData);
+            msg.AddTo(new EmailAddress(emailto, fullname));
+            var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Failed to send contactmail to nataliegeurtsen@gmail.com");
+                return;
+            }
+            Console.WriteLine("Succesfully sent contactmail to nataliegeurtsen@gmail.com");
+            //var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            //var client = new SendGridClient(apiKey);
+            //var from = new EmailAddress("nataliegeurtsen@gmail.com", "Natalie Geurtsen");
+            //var subject = emailsubject;
+            //var fullname = firstname + " " + lastname;
+            //var to = new EmailAddress(emailto, fullname);
+            //var plainTextContent = message;
+            //var htmlContent = message;
+            //var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            //var response = await client.SendEmailAsync(msg);
         }
     }
 }
