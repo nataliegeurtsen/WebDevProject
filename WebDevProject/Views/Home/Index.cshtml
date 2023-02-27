@@ -1,9 +1,10 @@
-﻿@{
+﻿@model PageViewCount
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">WebDevProject</h1>
+    <img src="resources/logos/Natalie Geurtsennataliegeurtsen.png" style="padding: 5%"/>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>Deze view is X keer bekeken</p>
+    <p>Deze view is @Model.PageViews keer bekeken</p>
 </div>
