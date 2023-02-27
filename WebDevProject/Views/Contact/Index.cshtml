@@ -77,13 +77,18 @@
                 </script>*@
 
                 <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-                <div class="g-recaptcha" data-sitekey="6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi" data-action="LOGIN"></div>
+                <div class="g-recaptcha" data-sitekey="6LectbYkAAAAALm7-ctPFLuTX9Gwsv63P7GcPxEi" data-action="LOGIN" data-callback="recaptcha_callback"></div>
                 
 
 
                 <div class="form-contactpagina__inputelement">
                     <input type="reset" value="Reset">
-                    <input type="submit" value="Verstuur!">
+                    <input type="submit" id="Verstuur" value="Verstuur!" disabled>
+                    <script type="text/javascript">
+                        function recaptcha_callback() {
+                            $('#Verstuur').removeAttr('disabled');
+                        };
+                    </script>
                 </div>
 
             </form>
