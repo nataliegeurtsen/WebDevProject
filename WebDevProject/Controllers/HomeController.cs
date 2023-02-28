@@ -30,6 +30,11 @@ namespace WebDevProject.Controllers
             return View();
         }
 
+        public IActionResult Chat()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

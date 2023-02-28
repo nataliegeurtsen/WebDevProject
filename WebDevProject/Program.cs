@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebDevProject.Controllers;
+using WebDevProject.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,10 @@ builder.Services.AddDbContext<MyDbContext>(x => x.UseSqlServer(connectionString)
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Adds SignalR to the ASP.NET Core dependency injection and routing systems
+builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -31,5 +36,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

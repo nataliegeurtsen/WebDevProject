@@ -1,0 +1,51 @@
+﻿@model Person
+@{
+    ViewData["Title"] = "Chat";
+}
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/chat.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="page">
+        <section class="chat">
+            <div class="container">
+                <div class="row p-1">
+                    <div class="col-1">User</div>
+                    <div class="col-5"><input type="text" id="userInput" maxlength="64" /></div>
+                </div>
+                <div class="row p-1">
+                    <div class="col-1">Message</div>
+                    <div class="col-5"><input type="text" class="w-100" id="messageInput" maxlength="200" /></div>
+                </div>
+                <div class="row p-1">
+                    <div class="col-6 text-end">
+                        <input type="button" id="sendButton" value="Send Message" />
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class="col-6">
+                        <hr />
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class="col-6">
+                        <ul id="messagesList"></ul>
+                    </div>
+                </div>
+            </div>
+            <script src="~/js/signalr/dist/browser/signalr.js"></script>
+            <script src="~/js/chat.js"></script>
+
+        </section>
+    </div>
+
+</body>
+</html>
