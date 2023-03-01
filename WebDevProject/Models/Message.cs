@@ -5,7 +5,7 @@ namespace WebDevProject.Models
     public class Message
     {
         [Key]
-        public Guid FormId { get; set; } = Guid.NewGuid();
+        public Guid MessageId { get; set; } = Guid.NewGuid();
         [Required]
         [MaxLength(200)]
         public string Text { get; set; }
@@ -15,5 +15,10 @@ namespace WebDevProject.Models
         [Required]
         public DateTime SendTime { get; set; } = DateTime.Now;
 
+        public Message(string sender, string text)
+        {
+            Sender = sender;
+            Text = text;
+        }
     }
 }
