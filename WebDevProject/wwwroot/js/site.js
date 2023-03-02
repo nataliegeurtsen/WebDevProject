@@ -1,20 +1,23 @@
 ﻿var originalTop = 0;
 
 function parallax() {
+	console.log("parallax");
+
+	const scroll = document.getElementsByTagName("header")[0].getBoundingClientRect().y;
 	//tekst
 	let s = document.getElementById("floater-slow");
 	//var yPos = 0 - window.pageYOffset / 4;
 	//s.style.top = originalTop + yPos + "%";
-	let yPos = window.pageYOffset - (window.pageYOffset / 4);
+	let yPos = scroll - (scroll / 8);
 	s.style.top = 0 + yPos + "px";
 
 	//blobs
 	s = document.getElementsByClassName("blob-image");
-	console.log(s);
-	yPos = window.pageYOffset - (window.pageYOffset / 6);
+	/*console.log(s);*/
+	yPos = scroll - (scroll / 2);
 	for (var i = 0; i < s.length; i++) {
 		let elem = s[i];
-		console.log(elem);
+		/*console.log(elem);*/
 
 		// We need to calculate the original top css property, in order to correctly
 		// offset the top for parallax scrolling.
@@ -31,6 +34,8 @@ function parallax() {
 	
 }
 
-window.addEventListener("scroll", function () {
+document.body.addEventListener("scroll", function () {
 	parallax();
 });
+
+/*setInterval(parallax, 10);*/
