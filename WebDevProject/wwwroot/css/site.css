@@ -23,9 +23,11 @@ html {
 
 li > a.nav-link {
     color: white !important;
+    font-family: HelveticaNeue;
+    font-size: 1.2rem;
 }
 body {
-    color: transparent;
+    color: white;
     height: 100%;
     min-height: 100%;
     display: flex;
@@ -79,10 +81,6 @@ div.container {
 }
 
 .logo {
-
-}
-
-.tijdelijk {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,7 +90,7 @@ div.container {
     top: 0;
     left: 10%;
     z-index: -4;
-    /*transition: top 0.1s ease-out;*/
+    transition: top 0.3s ease-out;
 }
 
 main, .image-main-container {
@@ -146,6 +144,24 @@ main, .image-main-container {
     z-index: -3;
 }
 
+.blob-image-6 {
+    left: 70%;
+    top: 130%;
+    height: 80%;
+    width: 50%;
+    z-index: -3;
+    transform: rotate(45deg);
+}
+
+.blob-image-7 {
+    left: 0%;
+    top: 140%;
+    height: 70%;
+    width: 50%;
+    z-index: -3;
+    transform: rotate(45deg);
+}
+
 body::-webkit-scrollbar {
     width: 50px;
 }
@@ -158,4 +174,30 @@ body::-webkit-scrollbar-thumb {
     background-image: url('/resources/assets/scrollicon.png');
     background-repeat: no-repeat, no-repeat;
     background-size: 50px;
+}
+
+.profile-content {
+    width: 120vh;
+    justify-items: start;
+    margin-block: 100vh;
+    /*white-space: break-spaces;*/
+}
+.profile-content > *{
+    margin-bottom: 8rem;
+
+}
+.profile-content__category--hidden-mobile {
+    
+}
+
+.profile-content__category-title {
+    transition: top 0.3s ease-out;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.profile-content__element * {
+    transition: top 0.3s ease-out;
+    font-size: 1.5rem;
 }
