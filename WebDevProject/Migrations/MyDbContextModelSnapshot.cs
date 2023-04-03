@@ -278,7 +278,7 @@ namespace WebDevProject.Migrations
 
                     b.HasKey("FormId");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Persons", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
