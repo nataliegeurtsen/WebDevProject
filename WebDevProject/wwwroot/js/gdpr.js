@@ -34,8 +34,9 @@ class GDPR {
         this.resetContent();
         const status = this.cookieStatus() == null ? 'not-chosen' : this.cookieStatus();
         const element = document.querySelector(`.content-gdpr-${status}`);
-        element.classList.add('show');
-
+        if (element != null) {
+            element.classList.add('show');
+        }
     }
 
     resetContent() {
@@ -47,14 +48,17 @@ class GDPR {
             '.content-gdpr-not-chosen'];
 
         for (const c of classes) {
-            document.querySelector(c).classList.add('hide');
-            document.querySelector(c).classList.remove('show');
+            let element = document.querySelector(c);
+            if (element != null) {
+                element.classList.remove('show');
+                element.classList.add('hide');
+            }
         }
     }
 
     showStatus() {
-        document.getElementById('content-gpdr-consent-status').innerHTML =
-            this.cookieStatus() == null ? 'Niet gekozen' : this.cookieStatus();
+        //document.getElementById('content-gpdr-consent-status').innerHTML =
+        //    this.cookieStatus() == null ? 'Niet gekozen' : this.cookieStatus();
     }
 
     cookieStatus(status) {
@@ -81,6 +85,7 @@ class GDPR {
 
     showGDPR() {
         document.querySelector(`.gdpr-consent`).classList.add('show');
+        document.querySelector(`.gdpr-consent`).classList.remove('hide');
     }
 }
 

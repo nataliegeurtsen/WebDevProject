@@ -4,7 +4,7 @@
     bottom: -100px;
     color: #fff;
     padding: 6px;
-    font-size: 13px;
+    font-size: 16px;
     text-align: center;
     bottom: 0;
     height: 100px;
@@ -26,8 +26,6 @@
     align-items: center;
     padding: 10px;
     margin: 5px;
-    border: 2px solid gray;
-    border-radius: 15px 15px 15px 15px;
 }
 
 .gdpr-consent__description{
@@ -40,13 +38,22 @@
     flex-direction: row-reverse;
     justify-content: space-evenly;
     width: 100%;
+
 }
 
 .gdpr-consent__button--accept {
+    color: #fff;
     background-color: #d5f5d5;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.31);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .gdpr-consent__button--accept:hover {
@@ -54,9 +61,17 @@
 }
 
 .gdpr-consent__button--reject {
+    color: #fff;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.31);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hide{
