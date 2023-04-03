@@ -1,8 +1,23 @@
 
-.container {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial;
+.gpdr-container {
+    position: fixed;
+    bottom: -100px;
+    color: #fff;
+    padding: 6px;
+    font-size: 13px;
+    text-align: center;
+    bottom: 0;
+    height: 100px;
+    width: 50%;
+    z-index: 10;
+    left: 25%;
+    margin-bottom: 1%;
+    background: rgba(255, 255, 255, 0.31);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .gdpr-consent {

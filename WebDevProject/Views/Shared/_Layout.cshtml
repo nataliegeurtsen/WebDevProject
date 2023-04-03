@@ -18,7 +18,7 @@
     <img class="blob-image blob-image-6" alt="Blob Image" src="/resources/assets/Asset 1.png">
     <img class="blob-image blob-image-7" alt="Blob Image" src="/resources/assets/Asset 4.png">
 
-
+    <partial name="_Gdpr"/>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
             <div class="container-fluid">
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                     <a asp-area="" asp-controller="Home" asp-action="Index" style="margin-inline: 3%">
-                        <img src="/resources/logos/icon.svg" alt="NG" style="width:100px;"/>
+                        <img src="/resources/logos/icon.svg" alt="NG" style="width:100px;" />
                     </a>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -62,47 +62,6 @@
     </div>
 
     <footer class="footer">
-
-        <link rel="stylesheet" href="~/css/gdpr.css">
-        <script defer src="~/js/gdpr.js"></script>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <section class="Gdpr">
-
-            <div class="container">
-
-                <h1 id="content-gpdr-consent-status"></h1>
-
-                <div class="content-gdpr-not-chosen hide">
-                    <p>Deze content wordt alleen getoond als gdrp consent niet is gekozen.</p>
-                </div>
-
-                <div class="content-gdpr-accept hide">
-                    <p>Deze content wordt alleen getoond als gdrp is geaccepteerd.</p>
-                </div>
-
-                <div class="content-gdpr-reject hide">
-                    <p>Deze content wordt alleen getoond als gdrp is verworpen.</p>
-                </div>
-
-                <section class="gdpr-consent hide">
-
-                    <div class="gdpr-consent__description">
-                        <p>
-                            Deze website gebruikt cookies.
-                            We gebruiken cookies om content te personaliseren, voor social media en het analyseren
-                            van verkeer op de website, advertenties.
-                        </p>
-                    </div>
-
-                    <div class="gdpr-consent__choice">
-                        <button class="gdpr-consent__button--accept">Ja, natuurlijk</button>
-                        <button class="gdpr-consent__button--reject">Neu, misschien later</button>
-                    </div>
-
-                </section>
-            </div>
-
-        </section>
         <div class="container">
             &copy; 2023 - Natalie Geurtsen - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
