@@ -3,20 +3,29 @@
 .page {
     display: flex;
     flex-direction: column;
+    width: 75%;
     font-family: Arial;
+    background: rgba(255, 255, 255, 0.31);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3%;
+    margin: 5%;
 }
 
 .contact {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
 .form-contactpagina__inputelement{
     display: flex;
     flex-direction: row;
-    margin: 15px 0px 15px 0px
+    margin: 15px 0px 15px 0px;    
 }
 
 .fx-col{
