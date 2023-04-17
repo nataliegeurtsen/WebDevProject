@@ -3,11 +3,19 @@
 .page {
     display: flex;
     flex-direction: column;
+    width: 75%;
     font-family: Arial;
+    background: rgba(255, 255, 255, 0.31);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3%;
+    margin: 5%;
 }
 
 .personalia {
-    background-color: #e7e8ec;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,7 +23,6 @@
 }
 
 .slideshow-person-logo {
-    background-color: #e7e8ec;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -23,7 +30,6 @@
 }
 
 .profile {
-    background-color: #faf8f8;
     width: 100%;
 }
 
@@ -32,16 +38,17 @@
     border-radius: 5%;
     margin: 15px 0px 15px 0px;
     max-height: 200px;
+    max-width: 200px;
     animation: glow 3s ease alternate;
 }
 
 .profile-content {
-    padding: 15px;
-    font-size: 20px;
+    margin: 0px;
+    font-size: 16px;
 }
 
 .profile-content__category-title {
-    color: rgba(39, 140, 39, 0.96);
+    color: rgba(61, 35, 167, 0.96);
 }
 
 .profile-content__category--hidden-mobile {
@@ -71,7 +78,7 @@
 }
 
 .profile-content__institute {
-    color: rgba(39, 140, 39, 0.96);
+    color: rgba(66, 39, 140, 0.96);
     margin-top: 0px;
     font-size: 14px;
 }

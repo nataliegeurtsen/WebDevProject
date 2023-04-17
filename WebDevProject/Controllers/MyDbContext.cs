@@ -10,5 +10,6 @@ namespace WebDevProject.Controllers
         {
         }
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }
