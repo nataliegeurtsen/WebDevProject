@@ -23,7 +23,7 @@ html {
 
 li > a.nav-link {
     color: white !important;
-    font-family: HelveticaNeue;
+    font-family: HelveticaNeue, 'Microsoft Jhenghei', sans-serif;
     font-size: 1.2rem;
 }
 body {
